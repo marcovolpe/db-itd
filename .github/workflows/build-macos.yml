@@ -22,8 +22,15 @@ jobs:
           rustup update stable
           rustup default stable
 
-      - name: Install deps
-        run: npm ci
+      # ---- FIX ROLLUP / NPM OPTIONAL DEPS ----
+      # Evita npm ci (bug su optional deps), riparti pulito e usa npm install.
+      - name: Clean lock & node_modules
+        run: |
+          rm -rf node_modules package-lock.json
+
+      - name: Install deps (npm install)
+        run: npm install --no-audit --no-fund
+      # ----------------------------------------
 
       - name: Build web (Vite)
         run: npm run build:web
@@ -35,6 +42,7 @@ jobs:
         run: |
           mkdir -p out
           APP_PATH=$(ls -d src-tauri/target/release/bundle/macos/*.app | head -n 1)
+          # zip corretto per .app
           ditto -c -k --sequesterRsrc --keepParent "$APP_PATH" out/OfflineFinder-macOS-app.zip
 
       - name: Upload artifact
@@ -42,3 +50,4 @@ jobs:
         with:
           name: macos-app
           path: out/OfflineFinder-macOS-app.zip
+          if-no-files-found: error
