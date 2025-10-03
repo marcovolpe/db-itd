@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline Finder</title>
+    <style>
+      :root{--bg:#f6f7fb;--fg:#0f172a;--muted:#64748b;--card:#ffffff;--border:#e2e8f0;--brand:#3730a3}
+      *{box-sizing:border-box}
+      body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;margin:0;background:var(--bg);color:var(--fg)}
+      .container{max-width:1100px;margin:0 auto;padding:24px}
+      .card{background:var(--card);border-radius:16px;box-shadow:0 10px 20px rgba(0,0,0,.06);padding:20px}
+      .row{display:flex;gap:12px;flex-wrap:wrap}
+      input,select,button{font-size:18px;padding:12px;border-radius:12px;border:1px solid #cbd5e1}
+      button{cursor:pointer}
+      .results{margin-top:16px}
+      .item{padding:12px 0;border-bottom:1px solid var(--border)}
+      .item:last-child{border-bottom:none}
+      .muted{color:var(--muted)}
+      .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+      .badge{background:#eef2ff;color:var(--brand);border-radius:999px;padding:4px 10px;font-size:12px}
+      .pagination{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:12px}
+      .pill{padding:2px 8px;border:1px solid var(--border);border-radius:999px;font-size:12px;color:var(--muted)}
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
