@@ -1,0 +1,13 @@
+# node / build
+node_modules/
+dist/
+dist-offline/
+
+# rust / tauri
+src-tauri/target/
+src-tauri/tauri.conf.json.backup
+
+# DATI (ESCLUDI DB)
+data/*
+!data/.gitkeep
+!data/README.txt
